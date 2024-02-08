@@ -2,18 +2,15 @@ import { FastifyInstance } from "fastify";
 import { z } from "zod"
 
 export async function createCustomFieldEmail(app: FastifyInstance) {
-  app.post("/create-custom-field-email/:taskId", async (request, replay) => {
-    const requestParams = z.object({
-      taskId: z.string()
-    })
+  app.post("/create-custom-field-email", async (request, replay) => {
 
     const requestBody = z.object({
+      taskId: z.string(),
       fieldId: z.string(),
       leadEmail: z.string()
     })
 
-    const { taskId } = requestParams.parse(request.params)
-    const { fieldId, leadEmail } = requestBody.parse(request.body)
+    const { taskId, fieldId, leadEmail } = requestBody.parse(request.body)
 
     try {
       const clickUpAPIKEY = process.env.CLICKUP_API_KEY

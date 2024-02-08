@@ -2,18 +2,15 @@ import { FastifyInstance } from "fastify";
 import { z } from "zod"
 
 export async function createCustomFieldInvestiment(app: FastifyInstance) {
-  app.post("/create-custom-field-investiment/:taskId", async (request, replay) => {
-    const requestParams = z.object({
-      taskId: z.string()
-    })
+  app.post("/create-custom-field-investiment", async (request, replay) => {
 
     const requestBody = z.object({
+      taskId: z.string(),
       fieldId: z.string(),
       investiment: z.number()
     })
 
-    const { taskId } = requestParams.parse(request.params)
-    const { fieldId, investiment } = requestBody.parse(request.body)
+    const { taskId, fieldId, investiment } = requestBody.parse(request.body)
 
     try {
       const clickUpAPIKEY = process.env.CLICKUP_API_KEY
