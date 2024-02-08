@@ -3,20 +3,21 @@ import { z } from "zod"
 import { pickUpBusinessDays } from "../../utils/pickUpBusinessDays";
 
 export async function createTaskOnList(app: FastifyInstance) {
-  app.post("/create-task/:listId", async (request, replay) => {
+  app.post("/create-task", async (request, replay) => {
     const requestParams = z.object({
       listId: z.string()
     })
 
     const requestBody = z.object({
+      listId: z.string(),
       solutionType: z.string(),
       taskName: z.string(),
       leadEmail: z.string(),
       projectType: z.string()
     })
 
-    const { listId } = requestParams.parse(request.params)
-    const { taskName, solutionType, leadEmail, projectType } = requestBody.parse(request.body)
+    // const { listId } = requestParams.parse(request.params)
+    const { listId, taskName, solutionType, leadEmail, projectType } = requestBody.parse(request.body)
 
     let solutionTypeById = ""
     let projectTypeById = ""
