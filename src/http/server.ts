@@ -32,7 +32,7 @@ app.register(cors, {
   // credentials: true,
   // Adicione mais configurações conforme necessário
   origin: (origin, callback) => {
-    const allowedOrigin = 'https://inovaso.com.br';
+    const allowedOrigin = 'https://chat.inovaso.com.br';
     if(origin === allowedOrigin) {
       callback(null, true); // Permite a origem
     } else {
