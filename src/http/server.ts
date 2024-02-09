@@ -19,6 +19,7 @@ import { getCustomFieldsByList } from "./routes/get-custom-fields-by-list";
 import { createCustomFieldEmail } from "./routes/create-custom-field-email";
 import { createCustomFieldInvestiment } from "./routes/create-custom-field-investment";
 import { updateTask } from "./routes/update-task";
+import { createTagOnTask } from "./routes/create-tag-on-task";
 
 const app = fastify();
 
@@ -42,7 +43,7 @@ app.register(getCustomFieldsByList)
 app.register(createCustomFieldEmail)
 app.register(createCustomFieldInvestiment)
 app.register(updateTask)
-
+app.register(createTagOnTask)
 
 app.listen({ port: nodeServerPort }).then(() => {
   console.log(`✔️  HTTP Server Running on port ${nodeServerPort}!`);
