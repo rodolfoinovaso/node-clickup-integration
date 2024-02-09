@@ -2,12 +2,15 @@ import { FastifyInstance } from "fastify";
 import { z } from "zod"
 
 export async function updateTask(app: FastifyInstance) {
-  app.put("/update-task/:taskId", async (request, replay) => {
-    const requestParams = z.object({
-      taskId: z.string()
+  app.put("/update-task", async (request, replay) => {
+
+    const requestBody = z.object({
+      taskId: z.string(),
+      pageDescription: z.string(),
+      occupationArea: z.string()
     })
 
-    const { taskId } = requestParams.parse(request.params)
+    const { taskId, pageDescription, occupationArea } = requestBody.parse(request.body)
 
     try {
       const clickUpAPIKEY = process.env.CLICKUP_API_KEY
@@ -26,7 +29,7 @@ export async function updateTask(app: FastifyInstance) {
             Authorization: clickUpAPIKEY ? clickUpAPIKEY : ""
           },
           body: JSON.stringify({
-            description: '',
+            description: `Área de atuação: ${occupationArea} \nDescrição de como quer a página: ${pageDescription}`,
             status: 'QUALIFICAÇÃO INICIAL',
             priority: 2,
           })
