@@ -26,11 +26,19 @@ const app = fastify();
 
 app.register(cors, {
   // Configurações do CORS
-  origin: "https://frdee.com.br", // Ajuste conforme necessário
+  // origin: "https://frdee.com.br", // Ajuste conforme necessário
   // methods: ["GET", "POST", "PUT", "DELETE"],
   // allowedHeaders: ["Content-Type"],
   // credentials: true,
   // Adicione mais configurações conforme necessário
+  origin: (origin, callback) => {
+    const allowedOrigin = 'https://jjj.com.br';
+    if(origin === allowedOrigin) {
+      callback(null, true); // Permite a origem
+    } else {
+      callback(new Error('Not allowed by CORS'), false); // Bloqueia a origem
+    }
+  },
 });
 
 const nodeServerPort = process.env.PORT;
