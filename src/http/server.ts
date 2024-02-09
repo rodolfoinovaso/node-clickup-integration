@@ -26,10 +26,10 @@ const app = fastify();
 
 app.register(cors, {
   // Configurações do CORS
-  origin: ["https://bb.com.br"], // Ajuste conforme necessário
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  allowedHeaders: ["Content-Type"],
-  credentials: true,
+  origin: "https://frdee.com.br", // Ajuste conforme necessário
+  // methods: ["GET", "POST", "PUT", "DELETE"],
+  // allowedHeaders: ["Content-Type"],
+  // credentials: true,
   // Adicione mais configurações conforme necessário
 });
 
