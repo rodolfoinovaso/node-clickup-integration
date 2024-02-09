@@ -26,7 +26,7 @@ const app = fastify();
 
 app.register(cors, {
   // Configurações do CORS
-  origin: ["https://dominioPermitido.com", "http://localhost", "https://inovaso.com.br", "https://chat.inovaso.com.br"], // Ajuste conforme necessário
+  origin: ["https://bb.com.br"], // Ajuste conforme necessário
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type"],
   credentials: true,
