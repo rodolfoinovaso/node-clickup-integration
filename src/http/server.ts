@@ -20,28 +20,9 @@ import { createCustomFieldEmail } from "./routes/create-custom-field-email";
 import { createCustomFieldInvestiment } from "./routes/create-custom-field-investment";
 import { updateTask } from "./routes/update-task";
 
-// const app = fastify();
-
 const app = fastify();
 
-// app.register(cors, {
-//   // Configurações do CORS
-//   // origin: "https://frdee.com.br", // Ajuste conforme necessário
-//   // methods: ["GET", "POST", "PUT", "DELETE"],
-//   // allowedHeaders: ["Content-Type"],
-//   // credentials: true,
-//   // Adicione mais configurações conforme necessário
-//   origin: (origin, callback) => {
-//     const allowedOrigin = 'https://chat.inovaso.com.br';
-//     if(origin === allowedOrigin) {
-//       callback(null, true); // Permite a origem
-//     } else {
-//       callback(new Error('Not allowed by CORS'), false); // Bloqueia a origem
-//     }
-//   },
-// });
-
-const nodeServerPort = process.env.PORT;
+const nodeServerPort = Number(process.env.PORT);
 
 app.register(getUserAuth)
 app.register(getTeamAuth)
@@ -63,22 +44,6 @@ app.register(createCustomFieldInvestiment)
 app.register(updateTask)
 
 
-
-// Inicie o servidor usando um objeto de opções para o método listen
-// const start = async () => {
-//   try {
-//     // O método listen agora recebe um objeto com as propriedades port e host
-//     await app.listen({ port: 3333, host: 'localhost' });
-//     console.log(`Servidor rodando em http://localhost:3333`);
-//   } catch (err) {
-//     console.error(err);
-//     process.exit(1);
-//   }
-// };
-
-// start();
-
-
-app.listen({ port: 3333 }).then(() => {
+app.listen({ port: nodeServerPort }).then(() => {
   console.log(`✔️  HTTP Server Running on port ${nodeServerPort}!`);
 });
