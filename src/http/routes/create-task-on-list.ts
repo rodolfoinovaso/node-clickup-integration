@@ -130,7 +130,7 @@ export async function createTaskOnList(app: FastifyInstance) {
       }
     }
 
-    const addTagWhenTheLeadComesFromGeneralChat = solutionType ? "" : "chat geral"
+    const addTagWhenTheLeadComesFromGeneralChat = solutionType && solutionType !== "null" ? "" : "chat geral"
 
     const toDay = new Date().getTime()
     const dueDate = pickUpBusinessDays(3);
