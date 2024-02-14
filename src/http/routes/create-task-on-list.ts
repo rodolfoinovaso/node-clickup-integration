@@ -61,6 +61,10 @@ export async function createTaskOnList(app: FastifyInstance) {
     }
 
     switch (projectType) {
+      case "plan": {
+        projectTypeById = "0c6d84f0-8309-4eff-bac2-d453bb425205"
+        break;
+      }
       case "landingPage": {
         projectTypeById = "b3645bd4-48d4-47a5-8033-23791f0ee022"
         break;
